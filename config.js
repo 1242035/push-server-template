@@ -3,12 +3,12 @@ var port = process.env.PORT || 4040;
 var host = process.env.HOST || 'http://localhost';
 var serverPath = process.env.SERVER_PATH || '/api';
 var adminPath = process.env.ADMIN_PATH || '/admin';
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://viauco:ab123456@ds129823.mlab.com:29823/viauco-test';
+var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI || '';
 var appId =  process.env.APP_ID || 'appId';
 var masterKey = process.env.MASTER_KEY || 'masterKey';
 var serverURL = process.env.SERVER_URL || host + ':' + port + serverPath;
 var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js';
-var androidKey = process.env.FCM_SERVER_KEY || 'AAAAE9vqfeg:APA91bGh01rCT9AennJjcxSrpHmmLw97yQbWkhX_WJbdnVLeVUjKwNnv4YRhmqG1sk2CBMhKSNqLvQ8XekeyHzK5pZ4osQDTEfQJ80KMxcKay9WAQg4-Ux2m1zZbLyy3dK39k2Lz6A5s';
+var androidKey = process.env.FCM_SERVER_KEY || '';
 
 module.exports.config = {
     host:host,
