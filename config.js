@@ -9,6 +9,8 @@ var masterKey = process.env.MASTER_KEY || 'masterKey';
 var serverURL = process.env.SERVER_URL || host + ':' + port + serverPath;
 var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js';
 var androidKey = process.env.FCM_SERVER_KEY || '';
+var user  = process.env.DASHBOARD_USER || 'user';
+var password  = process.env.DASHBOARD_PASSWORD || 'password';
 
 module.exports.config = {
     host:host,
@@ -43,6 +45,11 @@ module.exports.config = {
                 appId: appId,
                 masterKey: masterKey,
                 appName: "Push Server"
+            }
+        ],
+        users: [{
+              user:user,
+              pass:password,
             }
         ]
     }
