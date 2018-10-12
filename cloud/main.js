@@ -10,3 +10,15 @@ Parse.Cloud.define('getConfig', function(req, res) {
   res.success(config);
 });
 
+Parse.Cloud.define('getFirebaseConfig', function(req, res) {
+  var config = process.env.FIREBASE_CONFIG_JS || {
+      apiKey: "apiKey",
+      authDomain: "authDomain",
+      databaseURL: "databaseURL",
+      projectId: "projectId",
+      storageBucket: "storageBucket",
+      messagingSenderId: "messagingSenderId"
+  };
+  res.success(config);
+});
+
