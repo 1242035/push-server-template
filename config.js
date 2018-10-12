@@ -52,5 +52,8 @@ module.exports.config = {
               pass:password,
             }
         ]
+    },
+    options: { 
+        allowInsecureHTTP: true 
     }
 }
