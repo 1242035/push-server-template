@@ -8,13 +8,10 @@ var path = require('path');
 var config = require('./config').config;
 
 var api = new ParseServer(config.server);
-
-var options = { allowInsecureHTTP: true }
-var dashboard = new ParseDashboard(config.dashboard, options);
-
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
+var dashboard = new ParseDashboard(config.dashboard, config.options);
 
 var app = express();
 
@@ -26,7 +23,7 @@ app.use(config.serverPath, api);
 app.use(config.adminPath, dashboard);
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+  res.status(200).send('I dream of being a website.  Please star the server.');
 });
 
 // There will be a test page available on the /test path of your server url
@@ -37,7 +34,7 @@ app.get('/test', function(req, res) {
 
 var httpServer = require('http').createServer(app);
 httpServer.listen(config.port, function() {
-    console.log('parse-server-example running on port ' + config.port + '.');
+    console.log('Server running on port ' + config.port + '.');
 });
 
 // This will enable the Live Query real-time server
