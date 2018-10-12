@@ -1,16 +1,11 @@
-
-Parse.Cloud.define('hello', function(req, res) {
-    res.success('Hi');
-});
-
-Parse.Cloud.define('getConfig', function(req, res) {
+Parse.Cloud.define('getConfig', function(req) {
     var config = {
         "appName": 'AppName',
     };
-    return res.success(JSON.stringify(config));
+    return JSON.stringify(config);
 });
 
-Parse.Cloud.define('getFirebaseConfig', function(req, res) {
+Parse.Cloud.define('getFirebaseConfig', function(req) {
     var config = process.env.FIREBASE_CONFIG_JS || {
         apiKey: "apiKey",
         authDomain: "authDomain",
@@ -19,6 +14,6 @@ Parse.Cloud.define('getFirebaseConfig', function(req, res) {
         storageBucket: "storageBucket",
         messagingSenderId: "messagingSenderId"
     };
-    return res.success(JSON.stringify(config));
+    return JSON.stringify(config);
 });
 
