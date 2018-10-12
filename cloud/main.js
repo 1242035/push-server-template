@@ -7,7 +7,7 @@ Parse.Cloud.define('getConfig', function(req, res) {
   var config = {
       "appName": 'AppName',
   };
-  res.success(config);
+  return config;
 });
 
 Parse.Cloud.define('getFirebaseConfig', function(req, res) {
@@ -19,6 +19,6 @@ Parse.Cloud.define('getFirebaseConfig', function(req, res) {
       storageBucket: "storageBucket",
       messagingSenderId: "messagingSenderId"
   };
-  res.success(config);
+  return config;
 });
 
