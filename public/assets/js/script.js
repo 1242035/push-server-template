@@ -14,7 +14,7 @@ Steps.init = function() {
 
 Steps.buildParseUrl = function() {
   var url = Config.getUrl();
-  $('#parse-url').html(url + '/parse');
+  $('#parse-url').html(url + '/api');
 }
 
 Steps.bindBtn = function(id, callback) {
@@ -71,7 +71,7 @@ ParseRequest.postData = function() {
   function(error) {
        Steps.fillStepError('#step-1-error', 'There was a failure: ' + error);
    });
-  XHR.POST('/parse/classes/GameScore');
+  XHR.POST('/api/classes/GameScore');
 };
 
 ParseRequest.getData = function() {
@@ -90,7 +90,7 @@ ParseRequest.getData = function() {
     function(error) {
     	Steps.fillStepError('#step-2-error', 'There was a failure: ' + error);
   });  
-  XHR.GET('/parse/classes/GameScore');
+  XHR.GET('/api/classes/GameScore');
 };
 
 ParseRequest.postCloudCodeData = function() {
@@ -105,7 +105,7 @@ ParseRequest.postCloudCodeData = function() {
     function(error) {
     	Steps.fillStepError('#step-3-error', 'There was a failure: ' + error);
     });  
-  XHR.POST('/parse/functions/hello');
+  XHR.POST('/api/functions/hello');
 }
 
 
