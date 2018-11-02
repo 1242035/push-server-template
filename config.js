@@ -76,10 +76,10 @@ module.exports.config = {
             }
         },
         customPages: {
-            invalidLink: host +'/invalid_link.html',
-            verifyEmailSuccess: host + '/email_verification.html',
-            choosePassword: host + '/choose_password.html',
-            passwordResetSuccess: host + '/password_updated.html'
+            invalidLink: host +'/public/invalid_link.html',
+            verifyEmailSuccess: host + '/public/email_verification.html',
+            choosePassword: host + '/public/choose_password.html',
+            passwordResetSuccess: host + '/public/password_updated.html'
         }
     },
     dashboard:{
