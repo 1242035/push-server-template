@@ -29,7 +29,7 @@ module.exports.config = {
         masterKey: masterKey,
         serverURL: serverURL,
         verifyUserEmails: false,
-        publicServerURL: serverURL,
+        publicServerURL: host,
         appName:'Api Server',
         liveQuery: {
             classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
