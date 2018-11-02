@@ -28,7 +28,9 @@ module.exports.config = {
         appId: appId,
         masterKey: masterKey,
         serverURL: serverURL,
+        verifyUserEmails: false,
         publicServerURL: serverURL,
+        appName:'Api Server',
         liveQuery: {
             classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
         },
@@ -72,6 +74,12 @@ module.exports.config = {
                     }
                 }
             }
+        },
+        customPages: {
+            invalidLink: host +'/invalid_link.html',
+            verifyEmailSuccess: host + '/email_verification.html',
+            choosePassword: host + '/choose_password.html',
+            passwordResetSuccess: host + '/password_updated.html'
         }
     },
     dashboard:{
