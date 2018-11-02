@@ -13,7 +13,7 @@ var user  = process.env.DASHBOARD_USER || 'user';
 var password  = process.env.DASHBOARD_PASSWORD || 'password';
 var emailUser = process.env.EMAIL_USER || 'user@gmail.com';
 var emailPassword = process.env.EMAIL_PASSWORD || 'password';
-var emailPort = process.env.EMAIL_PASSWORD || 587;
+var emailPort = process.env.EMAIL_PORT || 587;
 var emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
 var emailIsSsl = process.env.EMAIL_IS_SSL || true;
 
@@ -28,7 +28,9 @@ module.exports.config = {
         appId: appId,
         masterKey: masterKey,
         serverURL: serverURL,
-        publicServerURL: serverURL,
+        verifyUserEmails: false,
+        publicServerURL: host,
+        appName:'Api Server',
         liveQuery: {
             classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
         },
@@ -72,6 +74,12 @@ module.exports.config = {
                     }
                 }
             }
+        },
+        customPages: {
+            invalidLink: host +'/invalid_link.html',
+            verifyEmailSuccess: host + '/email_verification.html',
+            choosePassword: host + '/choose_password.html',
+            passwordResetSuccess: host + '/password_updated.html'
         }
     },
     dashboard:{
