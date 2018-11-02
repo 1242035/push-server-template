@@ -13,7 +13,7 @@ var user  = process.env.DASHBOARD_USER || 'user';
 var password  = process.env.DASHBOARD_PASSWORD || 'password';
 var emailUser = process.env.EMAIL_USER || 'user@gmail.com';
 var emailPassword = process.env.EMAIL_PASSWORD || 'password';
-var emailPort = process.env.EMAIL_PASSWORD || 587;
+var emailPort = process.env.EMAIL_PORT || 587;
 var emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
 var emailIsSsl = process.env.EMAIL_IS_SSL || true;
 
