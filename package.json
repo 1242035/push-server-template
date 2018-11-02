@@ -14,8 +14,8 @@
     "parse": "*",
     "parse-dashboard": "*",
     "parse-server": "*",
-    "parse-server-mailgun": "^2.4.15",
-    "simple-parse-smtp-adapter": "^1.0.9"
+    "parse-server-mailgun": "*",
+    "simple-parse-smtp-adapter": "*"
   },
   "scripts": {
     "start": "node index.js"
