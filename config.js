@@ -1,3 +1,4 @@
+const resolve = require('path').resolve;
 
 var appName = process.env.APP_NAME || 'API server';
 var port = process.env.PORT || 4040;
@@ -7,7 +8,7 @@ var adminPath = process.env.ADMIN_PATH || '/admin';
 var databaseUri = process.env.DATABASE_URL || process.env.MONGODB_URI || '';
 var appId =  process.env.APP_ID || 'appId';
 var masterKey = process.env.MASTER_KEY || 'masterKey';
-var serverURL = ( (process.env.SERVER_URL) || (host + ':' + port) )  + serverPath;;
+var serverURL = ( (process.env.SERVER_URL) || (host + ':' + port) )  + serverPath;
 var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js';
 var androidKey = process.env.FCM_SERVER_KEY || '';
 var user  = process.env.DASHBOARD_USER || 'user';
@@ -17,7 +18,7 @@ var password  = process.env.DASHBOARD_PASSWORD || 'password';
 //var emailPort = process.env.EMAIL_PORT || 587;
 //var emailIsSsl = process.env.EMAIL_IS_SSL || true;
 var emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
-var emailDomain = process.env.EMAIL_DOMAIN || '';
+var emailDomain = process.env.EMAIL_DOMAIN || 'mailgun.org';
 var emailKey = process.env.EMAIL_KEY || '';
 var emailFrom = process.env.EMAIL_FROM || 'YourApp <noreply@yourapp.com>';
 
@@ -77,37 +78,35 @@ module.exports.config = {
                         subject: 'Verify Email'
                     }
                 }
-            }*/
+            },*/
             module: 'parse-server-mailgun',
             options: {
-                // The address that your emails come from
-                fromAddress: emailFrom,
-                // Your domain from mailgun.com
-                domain: emailDomain,
-                // Mailgun host (default: 'api.mailgun.net'). 
-                // When using the EU region, the host should be set to 'api.eu.mailgun.net'
-                host: emailHost,
-                // Your API key from mailgun.com
-                apiKey: emailKey,
+                fromAddress: emailFrom,// The address that your emails come from
+                domain: emailDomain,// Your domain from mailgun.com
+                host: emailHost,// Mailgun host (default: 'api.mailgun.net'). 
+                apiKey: emailKey,// Your API key from mailgun.com
                 // The template section
                 templates: {
                     passwordResetEmail: {
                         subject: 'Reset your password',
+                        pathPlainText: resolve(__dirname, 'public/password_reset_email.txt'),
                         pathHtml: resolve(__dirname, 'public/password_reset_email.html'),
                     },
                     verificationEmail: {
                         subject: 'Confirm your account',
+                        pathPlainText: resolve(__dirname, 'public/verification_email.txt'),
                         pathHtml: resolve(__dirname, 'public/verification_email.html'),
                     },
                     customEmailAlert: {
                         subject: 'Urgent notification!',
-                        pathHtml: resolve(__dirname, 'public/alert.html'),
+                        pathPlainText: resolve(__dirname, 'public/alert.txt'),
+                        pathHtml: resolve(__dirname, '/public/alert.html'),
                     }
                 }
             }
         },
         customPages: {
-            invalidLink: host +'/public/invalid_link.html',
+            invalidLink: host + '/public/invalid_link.html',
             verifyEmailSuccess: host + '/public/email_verification.html',
             choosePassword: host + '/public/choose_password.html',
             passwordResetSuccess: host + '/public/password_updated.html'
