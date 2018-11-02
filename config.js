@@ -1,4 +1,5 @@
 
+var appName = process.env.APP_NAME || 'API server';
 var port = process.env.PORT || 4040;
 var host = process.env.HOST || 'http://localhost';
 var serverPath = process.env.SERVER_PATH || '/api';
@@ -11,11 +12,14 @@ var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js';
 var androidKey = process.env.FCM_SERVER_KEY || '';
 var user  = process.env.DASHBOARD_USER || 'user';
 var password  = process.env.DASHBOARD_PASSWORD || 'password';
-var emailUser = process.env.EMAIL_USER || 'user@gmail.com';
-var emailPassword = process.env.EMAIL_PASSWORD || 'password';
-var emailPort = process.env.EMAIL_PORT || 587;
+//var emailUser = process.env.EMAIL_USER || 'user@gmail.com';
+//var emailPassword = process.env.EMAIL_PASSWORD || 'password';
+//var emailPort = process.env.EMAIL_PORT || 587;
+//var emailIsSsl = process.env.EMAIL_IS_SSL || true;
 var emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
-var emailIsSsl = process.env.EMAIL_IS_SSL || true;
+var emailDomain = process.env.EMAIL_DOMAIN || '';
+var emailKey = process.env.EMAIL_KEY || '';
+var emailFrom = process.env.EMAIL_FROM || 'YourApp <noreply@yourapp.com>';
 
 module.exports.config = {
     host:host,
@@ -30,7 +34,7 @@ module.exports.config = {
         serverURL: serverURL,
         verifyUserEmails: false,
         publicServerURL: host,
-        appName:'Api Server',
+        appName: appName,
         liveQuery: {
             classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
         },
@@ -46,7 +50,7 @@ module.exports.config = {
             }*/
         },
         emailAdapter: {
-            module: "simple-parse-smtp-adapter",
+            /*module: "simple-parse-smtp-adapter",
             options: {
                 service: 'SMTP', // required
                 fromAddress:emailUser,
@@ -73,6 +77,33 @@ module.exports.config = {
                         subject: 'Verify Email'
                     }
                 }
+            }*/
+            module: 'parse-server-mailgun',
+            options: {
+                // The address that your emails come from
+                fromAddress: emailFrom,
+                // Your domain from mailgun.com
+                domain: emailDomain,
+                // Mailgun host (default: 'api.mailgun.net'). 
+                // When using the EU region, the host should be set to 'api.eu.mailgun.net'
+                host: emailHost,
+                // Your API key from mailgun.com
+                apiKey: emailKey,
+                // The template section
+                templates: {
+                    passwordResetEmail: {
+                        subject: 'Reset your password',
+                        pathHtml: resolve(__dirname, 'public/password_reset_email.html'),
+                    },
+                    verificationEmail: {
+                        subject: 'Confirm your account',
+                        pathHtml: resolve(__dirname, 'public/verification_email.html'),
+                    },
+                    customEmailAlert: {
+                        subject: 'Urgent notification!',
+                        pathHtml: resolve(__dirname, 'public/alert.html'),
+                    }
+                }
             }
         },
         customPages: {
@@ -88,7 +119,7 @@ module.exports.config = {
                 serverURL: serverURL,
                 appId: appId,
                 masterKey: masterKey,
-                appName: "Push Server"
+                appName: appName
             }
         ],
         users: [{
