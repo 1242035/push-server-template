@@ -10,10 +10,10 @@
   "license": "MIT",
   "dependencies": {
     "express": "*",
-    "kerberos": "*",
+    "kerberos": "1.1.2",
     "parse": "*",
     "parse-dashboard": "*",
-    "parse-server": "*",
+    "parse-server": "3.1.2",
     "parse-server-mailgun": "*",
     "simple-parse-smtp-adapter": "*"
   },

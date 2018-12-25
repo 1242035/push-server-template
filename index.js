@@ -23,7 +23,7 @@ app.use(config.serverPath, api);
 app.use(config.adminPath, dashboard);
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the server.');
+  res.status(200).send('I dream of being a website.');
 });
 
 // There will be a test page available on the /test path of your server url
@@ -36,7 +36,7 @@ app.get('/test', function(req, res) {
 
 var httpServer = require('http').createServer(app);
 httpServer.listen(config.port, function() {
-    console.log('Server running on port ' + config.port + '.');
+    console.log('Server running on port: ' + config.port + '.');
 });
 
 // This will enable the Live Query real-time server
