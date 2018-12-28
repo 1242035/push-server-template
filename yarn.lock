@@ -865,7 +865,7 @@ domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dotenv@^6.2.0:
+dotenv@*:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha512-HygQCKUBSFl8wKQZBSemMywRWcEDNidvNbjGVyZu3nbZ8qq9ubiPoGLMdRDpfSrpkkm9BXYFkpKxxFX38o/76w==
@@ -1752,7 +1752,7 @@ jws@^3.1.5:
     jwa "^1.1.5"
     safe-buffer "^5.0.1"
 
-kerberos@1.1.2:
+kerberos@*:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/kerberos/-/kerberos-1.1.2.tgz#f213dae89c57e729786664fcf99117221e18e257"
   integrity sha512-N+CeRTi0f6ov85Fx+w/epVPTBy6bovoWjUCD6pvXoHWBWeqI6+ViV2psdoSc4CRtiZfJkhvYO3b47I4hJfOu7Q==
@@ -2462,7 +2462,7 @@ parse-server-mailgun@*:
     mailgun-js "^0.22.0"
     mustache "^3.0.0"
 
-parse-server@3.1.2:
+parse-server@*:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/parse-server/-/parse-server-3.1.2.tgz#c075ad288acfe27e8b60cc238a6492792a4fe25a"
   integrity sha512-Ca7hC+AHkt7F7cu9BU3rdw2KtfBNJ0S5jj/TuTBSGtBclYhM03b2pambXq1gNVkKVHATp19xWFAooU3WE6wXfQ==
