@@ -15,6 +15,8 @@ var dashboard = new ParseDashboard(config.dashboard, config.options);
 
 var app = express();
 
+app.disable('x-powered-by');
+
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
