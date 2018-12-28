@@ -1,4 +1,6 @@
 const resolve = require('path').resolve;
+require('dotenv').config();
+
 
 var appName = process.env.APP_NAME || 'API server';
 var port = process.env.PORT || 4040;
@@ -13,10 +15,6 @@ var cloud = process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js';
 var androidKey = process.env.FCM_SERVER_KEY || '';
 var user  = process.env.DASHBOARD_USER || 'user';
 var password  = process.env.DASHBOARD_PASSWORD || 'password';
-//var emailUser = process.env.EMAIL_USER || 'user@gmail.com';
-//var emailPassword = process.env.EMAIL_PASSWORD || 'password';
-//var emailPort = process.env.EMAIL_PORT || 587;
-//var emailIsSsl = process.env.EMAIL_IS_SSL || true;
 var emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com';
 var emailDomain = process.env.EMAIL_DOMAIN || 'mailgun.org';
 var emailKey = process.env.EMAIL_KEY || '';
@@ -51,34 +49,6 @@ module.exports.config = {
             }*/
         },
         emailAdapter: {
-            /*module: "simple-parse-smtp-adapter",
-            options: {
-                service: 'SMTP', // required
-                fromAddress:emailUser,
-                user: emailUser,
-                password: emailPassword,
-                host: emailHost,
-                isSSL: emailIsSsl, //True or false if you are using ssl
-                port: emailPort, //SSL port or another port
-                name: 'API server', //  optional, used for identifying to the server 
-                //Somtimes the user email is not in the 'email' field, the email is search first in
-                //email field, then in username field, if you have the user email in another field
-                //You can specify here
-                emailField: 'username',
-                templates: {
-                    //This template is used only for reset password email
-                    resetPassword: {
-                        //Path to your template
-                        template: __dirname + '/views/email/reset-password',
-                        //Subject for this email
-                        subject: 'Reset your password'
-                    },
-                    verifyEmail: {
-                        template: __dirname + '/views/email/verify-email',
-                        subject: 'Verify Email'
-                    }
-                }
-            },*/
             module: 'parse-server-mailgun',
             options: {
                 fromAddress: emailFrom,// The address that your emails come from
